@@ -1,0 +1,27 @@
+{
+  "name": "nightlight",
+  "version": "1.0.0",
+  "description": "App for nightlight",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "data-retriever": "file:local_modules/data-retriever",
+    "express": "^4.16.2",
+    "lighter": "file:local_modules/lighter",
+    "onoff": "^1.1.8",
+    "sinon": "^4.1.3"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.0.1",
+    "promise": "^8.0.1",
+    "sinon-stub-promise": "^4.0.0"
+  },
+  "scripts": {
+    "test": "mocha --exit local_modules/**/**.spec.js server.spec.js",
+    "start": "node server.js"
+  },
+  "author": "suhongjin",
+  "license": "ISC"
+}

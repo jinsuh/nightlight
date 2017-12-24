@@ -1,0 +1,15 @@
+{
+  "name": "data-retriever",
+  "version": "1.0.0",
+  "description": "Utilities to get data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "suhongjin",
+  "license": "ISC",
+  "dependencies": {
+    "promise": "^8.0.1",
+    "weather-js": "^2.0.0"
+  }
+}

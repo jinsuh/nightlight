@@ -1,0 +1,11 @@
+{
+  "name": "lighter",
+  "version": "1.0.0",
+  "description": "Controls the GPIO pins of the Raspberry Pi.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "suhongjin",
+  "license": "ISC",
+  "dependencies": {}
+}
