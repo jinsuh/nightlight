@@ -3,6 +3,6 @@ Inspired by http://www.instructables.com/id/LED-Cube-Night-Light/. The nightligh
 
 The nodejs and Android parts have been divided into two different folders.
 
-#Node.js  
+<b>Node.js</b>  
 To run the server:
 node server.js
