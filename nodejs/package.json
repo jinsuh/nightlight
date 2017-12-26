@@ -19,7 +19,7 @@
     "sinon-stub-promise": "^4.0.0"
   },
   "scripts": {
-    "test": "mocha --exit local_modules/**/**.spec.js server.spec.js",
+    "test": "mocha --exit local_modules/**/**.spec.js **.spec.js",
     "start": "node server.js"
   },
   "author": "suhongjin",

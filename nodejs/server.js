@@ -3,10 +3,12 @@ const bodyParser = require('body-parser');
 const dataRetriever = require('data-retriever');
 const express = require('express');
 const lighter = require('lighter');
+const Nightlight = require('./nightlight_model');
 
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 8080;
 const app = express();
+const nightlightModel = new Nightlight();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,6 +22,15 @@ app.post('/setrgb', function(req, res) {
   let g = req.body.green;
   let b = req.body.blue;
   res.send(r + ' ' + b + ' ' + g);
+});
+
+app.get('/power', function(req, res) {
+  res.send(nightlightModel.isOn);
+});
+
+app.post('/flip', function(req, res) {
+  nightlightModel.flipState();
+  res.sendStatus(200);
 });
 
 app.get('/temperature', (req, res) => {
