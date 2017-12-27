@@ -11,6 +11,7 @@ public class NightlightState {
     public static final String BLUE_TAG = "blue tag";
 
     private int redValue, greenValue, blueValue;
+    private boolean isOn;
 
     private static NightlightState instance;
 
@@ -23,6 +24,7 @@ public class NightlightState {
 
     private NightlightState() {
         redValue = greenValue = blueValue = 0;
+        isOn = false;
     }
 
     /*
@@ -31,7 +33,7 @@ public class NightlightState {
      * @param idTag The corresponding String tag to determine which color to update.
      * @throws AssertionError If an idTag does not correspond to a color tag.
      */
-    public void updateValue(int value, String idTag) {
+    public void updateColorValue(int value, String idTag) {
         switch (idTag) {
             case RED_TAG:
                 redValue = value;
@@ -47,6 +49,10 @@ public class NightlightState {
         }
     }
 
+    public void setNightlightPower(boolean isOn) {
+        this.isOn = isOn;
+    }
+
     public int getRedValue() {
         return redValue;
     }
@@ -57,5 +63,9 @@ public class NightlightState {
 
     public int getBlueValue() {
         return blueValue;
+    }
+
+    public boolean isNightlightOn() {
+        return isOn;
     }
 }

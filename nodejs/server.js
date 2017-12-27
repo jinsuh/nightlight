@@ -25,12 +25,14 @@ app.post('/setrgb', function(req, res) {
 });
 
 app.get('/power', function(req, res) {
+  console.log('Sending power state request.');
   res.send(nightlightModel.isOn);
 });
 
 app.post('/flip', function(req, res) {
+  console.log('Flipping power');
   nightlightModel.flipState();
-  res.sendStatus(200);
+  res.send(nightlightModel.isOn);
 });
 
 app.get('/temperature', (req, res) => {

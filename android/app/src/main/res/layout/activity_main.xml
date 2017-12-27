@@ -12,21 +12,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2"/>
+        app:layout_constraintGuide_percent="0.2" />
 
     <android.support.constraint.Guideline
         android:id="@+id/green_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3"/>
+        app:layout_constraintGuide_percent="0.3" />
 
     <android.support.constraint.Guideline
         android:id="@+id/blue_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4"/>
+        app:layout_constraintGuide_percent="0.4" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/button_top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/button_bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
 
     <!--VERTICAL GUIDELINES-->
     <android.support.constraint.Guideline
@@ -34,37 +48,64 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".15"/>
+        app:layout_constraintGuide_percent=".15" />
 
     <android.support.constraint.Guideline
         android:id="@+id/seekbar_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".85"/>
+        app:layout_constraintGuide_percent=".85" />
 
     <SeekBar
         android:id="@+id/red_seekbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/red_guideline"
-        app:layout_constraintStart_toStartOf="@id/seekbar_left"
-        app:layout_constraintEnd_toEndOf="@id/seekbar_right"/>
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="@+id/seekbar_right"
+        app:layout_constraintStart_toStartOf="@+id/seekbar_left"
+        app:layout_constraintTop_toBottomOf="@+id/red_guideline" />
 
     <SeekBar
         android:id="@+id/green_seekbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/green_guideline"
-        app:layout_constraintStart_toStartOf="@id/seekbar_left"
-        app:layout_constraintEnd_toEndOf="@id/seekbar_right"/>
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="@+id/seekbar_right"
+        app:layout_constraintStart_toStartOf="@+id/seekbar_left"
+        app:layout_constraintTop_toBottomOf="@+id/green_guideline" />
 
     <SeekBar
         android:id="@+id/blue_seekbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/blue_guideline"
-        app:layout_constraintStart_toStartOf="@id/seekbar_left"
-        app:layout_constraintEnd_toEndOf="@id/seekbar_right"/>
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="@+id/seekbar_right"
+        app:layout_constraintStart_toStartOf="@+id/seekbar_left"
+        app:layout_constraintTop_toBottomOf="@+id/blue_guideline" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_bottom_guideline"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/seekbar_right"
+        app:layout_constraintStart_toEndOf="@+id/seekbar_left"
+        app:layout_constraintTop_toTopOf="@+id/button_top_guideline">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:foreground="@drawable/ic_power" />
+
+        <Button
+            android:id="@+id/power_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/power_button" />
+
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

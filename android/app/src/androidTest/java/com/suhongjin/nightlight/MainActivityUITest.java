@@ -5,6 +5,7 @@ import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,17 +25,26 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 @LargeTest
 public class MainActivityUITest {
 
+    private MainActivity activity;
+
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
             MainActivity.class);
 
+    @Before
+    public void setUp() {
+        activity = activityTestRule.getActivity();
+    }
+
     @Test
-    public void initialScreen() {
+    public void testInitialScreen() {
         onView(withId(R.id.red_seekbar)).check(
                 matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
         onView(withId(R.id.green_seekbar)).check(
                 matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
         onView(withId(R.id.blue_seekbar)).check(
+                matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.power_button)).check(
                 matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
 }

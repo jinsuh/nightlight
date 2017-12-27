@@ -25,7 +25,6 @@ public class NightlightClient {
     private static final String TAG = NightlightClient.class.getSimpleName();
     private static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
-    public static String SERVER_URL = "http://localhost";
     private OkHttpClient client;
 
     public static synchronized NightlightClient getInstance() {
@@ -47,7 +46,8 @@ public class NightlightClient {
         Log.d(TAG, "Calling send color change request.");
 
         RequestBody body = RequestBody.create(JSON, createColorChangeParams(r, g, b));
-        Request request = new Request.Builder().url(SERVER_URL).post(body).build();
+        Request request = new Request.Builder().url(Utils.SERVER_URL + Utils.UPDATE_COLOR_HANDLER)
+                .post(body).build();
         client.newCall(request).enqueue(callback);
     }
 
@@ -62,5 +62,20 @@ public class NightlightClient {
         json.put(Utils.POST_BLUE_PARAM, b);
 
         return json.toString();
+    }
+
+    public void getNightlightPowerState(Callback callback) {
+        Log.d(TAG, "Requesting nightlight power state.");
+
+        Request request = new Request.Builder().url(Utils.SERVER_URL + Utils.IS_POWER_ON_HANDLER)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+
+    public void sendPowerFlipRequest(Callback callback) {
+        RequestBody body = RequestBody.create(null, new byte[0]);
+        Request request = new Request.Builder().url(Utils.SERVER_URL + Utils.FLIP_POWER_HANDLER)
+                .post(body).build();
+        client.newCall(request).enqueue(callback);
     }
 }
