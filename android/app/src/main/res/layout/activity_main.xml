@@ -8,37 +8,53 @@
 
     <!--HORIZONTAL GUIDELINES-->
     <android.support.constraint.Guideline
-        android:id="@+id/button_top_guideline"
+        android:id="@+id/power_top_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.2" />
 
+    <android.support.constraint.Guideline
+        android:id="@+id/power_bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <!--VERTICAL GUIDELINES-->
     <android.support.constraint.Guideline
         android:id="@+id/button_bottom_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
     <Button
         android:id="@+id/power_button"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@drawable/power_button"
-        app:layout_constraintBottom_toBottomOf="@+id/button_bottom_guideline"
-        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintDimensionRatio="H, 1:1"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button_top_guideline" />
+        app:layout_constraintTop_toTopOf="@+id/power_top_guideline" />
 
     <Button
         android:id="@+id/manual_button"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        android:text="Manual"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/button_bottom_guideline"
+        android:text="@string/manual"/>
+
+    <Button
+        android:id="@+id/auto_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/button_bottom_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/auto"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Nightlight</string>
+    <string name="manual">Manual</string>
+    <string name="auto">Auto</string>
     <string name="done">Done</string>
+    <string name="server_connection_error">Could not connect to the server</string>
 </resources>

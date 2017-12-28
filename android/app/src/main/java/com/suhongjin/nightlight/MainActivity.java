@@ -68,7 +68,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onFailure(@NonNull Call call, @NonNull IOException e) {
+            //TODO: Should there be a reconnect dialog instead?
             Log.e(TAG, "Failure on isPowerOn callback: " + e.toString());
+            runOnUiThread(() -> {
+                Toast.makeText(
+                        MainActivity.this,
+                        R.string.server_connection_error,
+                        Toast.LENGTH_LONG).show();
+            });
         }
 
         @Override
@@ -85,10 +92,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onFailure(@NonNull Call call, @NonNull IOException e) {
-            Toast.makeText(
-                    MainActivity.this,
-                    "Could not flip power.",
-                    Toast.LENGTH_LONG).show();
+            runOnUiThread(() -> {
+                Toast.makeText(
+                        MainActivity.this,
+                        R.string.server_connection_error,
+                        Toast.LENGTH_LONG).show();
+            });
         }
 
         @Override

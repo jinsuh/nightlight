@@ -43,7 +43,7 @@ public class ColorPickerDialogFragment extends DialogFragment implements SeekBar
         builder.setView(layoutView)
                 .setPositiveButton(
                         R.string.done, (dialogInterface, i) -> {
-                     // Update colors one more time, send color request and then exit dialog.
+                            // Update colors one more time, send color request and then exit dialog.
                             updateColors();
                             try {
                                 nightlightClient.sendColorChangeRequest(
