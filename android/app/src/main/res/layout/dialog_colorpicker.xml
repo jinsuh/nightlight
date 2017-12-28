@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <SeekBar
+        android:id="@+id/red_seekbar"
+        android:layout_width="@dimen/seekbar_width"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingTop="@dimen/seekbar_padding"
+        android:layout_gravity="center_horizontal"
+        android:thumbTint="@color/redThumbTint"
+        android:progressTint="@color/redThumbTint"
+        android:max="255" />
+
+    <SeekBar
+        android:id="@+id/green_seekbar"
+        android:layout_width="@dimen/seekbar_width"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingTop="@dimen/seekbar_padding"
+        android:layout_gravity="center_horizontal"
+        android:thumbTint="@color/greenThumbTint"
+        android:progressTint="@color/greenThumbTint"
+        android:max="255" />
+
+    <SeekBar
+        android:id="@+id/blue_seekbar"
+        android:layout_width="@dimen/seekbar_width"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingTop="@dimen/seekbar_padding"
+        android:layout_gravity="center_horizontal"
+        android:thumbTint="@color/blueThumbTint"
+        android:progressTint="@color/blueThumbTint"
+        android:max="255" />
+
+    <LinearLayout
+        android:id="@+id/color_preview"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/seekbar_padding"
+        android:orientation="horizontal"
+        android:background="@android:color/black"/>
+
+</LinearLayout>

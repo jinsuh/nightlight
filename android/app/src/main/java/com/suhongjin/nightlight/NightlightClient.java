@@ -64,6 +64,14 @@ public class NightlightClient {
         return json.toString();
     }
 
+    public void getNightlightColor(Callback callback) {
+        Log.d(TAG, "Requesting nightlight color.");
+
+        Request request = new Request.Builder().url(Utils.SERVER_URL + Utils.GET_COLOR_HANDLER)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+
     public void getNightlightPowerState(Callback callback) {
         Log.d(TAG, "Requesting nightlight power state.");
 
