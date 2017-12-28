@@ -18,10 +18,17 @@ app.get('/', (req, res) => {
 });
 
 app.post('/setrgb', function(req, res) {
-  let r = req.body.red;
-  let g = req.body.green;
-  let b = req.body.blue;
-  res.send(r + ' ' + b + ' ' + g);
+  nightlightModel.updateColorValues(req.body.red, req.body.green, req.body.blue);
+  res.status(200);
+});
+
+app.get('/getrgb', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  let jsonString = {};
+  jsonString['red'] = nightlightModel.redValue;
+  jsonString['green'] = nightlightModel.greenValue;
+  jsonString['blue'] = nightlightModel.blueValue;
+  res.status(200).json(jsonString);
 });
 
 app.get('/power', function(req, res) {

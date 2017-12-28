@@ -16,7 +16,7 @@ chai.use(chaiHttp);
 sinonStubPromise(sinon);
 
 describe('Routes', () => {
-  describe('/ GET', () => {
+  describe('GET requests', () => {
     beforeEach(() => {
       dataRetriever.getTemperature = sinon.stub().returnsPromise();
     });
@@ -25,6 +25,36 @@ describe('Routes', () => {
         .get('/')
         .end((err, res) => {
           res.should.have.status(200);
+        });
+      done();
+    });
+    it('RGB page should return Nightlight RGB values in json format.', (done) => {
+      chai.request(server)
+        .get('/getrgb')
+        .end((err, res) => {
+          res.should.have.status(200);
+          let expectedJson = {
+            'red': 0,
+            'green': 0,
+            'blue': 0
+          };
+          expect(res).to.be.json;
+          res.body.should.be.eql(expectedJson);
+        });
+      let expectedRed = 12;
+      let expectedGreen = 23;
+      let expectedBlue = 34;
+      nightlightModel.updateColorValues(expectedRed, expectedGreen, expectedBlue);
+      chai.request(server)
+        .get('getrgb')
+        .end((err, res) => {
+          res.shoudld.have.status(200);
+          let expectedJson = {
+            'red': expectedRed,
+            'green': expectedGreen,
+            'blue': expectedBlue
+          };
+          res.body.should.be.eql(expectedJson);
         });
       done();
     });
@@ -62,6 +92,41 @@ describe('Routes', () => {
         .end((err, res) => {
           res.should.have.status(500);
           expect(err).to.be.eq(errorReason);
+        });
+      done();
+    });
+  });
+  describe('POST requests', () => {
+    it('Set rgb posts', (done) => {
+      let expectedRed = '12';
+      let expectedGreen = '23';
+      let expectedBlue = '34';
+      chai.request(server)
+        .post('/setrgb')
+        .field('red', expectedRed)
+        .field('green', expectedGreen)
+        .field('blue', expectedBlue)
+        .end((err, res) => {
+          res.should.have.status(200);
+          expect(nightlightModel.redValue).to.be.eq(parseInt(expectedRed));
+          expect(nightlightModel.greenValue).to.be.eq(parseInt(expectedGreen));
+          expect(nightlightModel.blueValue).to.be.eq(parseInt(expectedBlue));
+        });
+      done();
+    });
+    it('Flip power state posts', (done) => {
+      let expectedPower = !nightlightModel.isOn;
+      chai.request(server)
+        .post('flip')
+        .end((err, res) => {
+          res.should.have.status(200);
+          expect(nightlightModel.isOn).to.be.eq(parseBoolean(expectedPower));
+        });
+      expectedPower = !expectedPower;
+      chai.request(server)
+        .post('flip')
+        .end((err, res) => {
+          expect(nightlightModel.isOn).to.be.eq(parseBoolean(expectedPower));
         });
       done();
     });
