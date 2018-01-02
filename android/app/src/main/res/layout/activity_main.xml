@@ -1,60 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:id="@+id/drawer_layout"
     android:layout_height="match_parent"
-    tools:context="com.suhongjin.nightlight.MainActivity">
+    android:layout_width="match_parent">
 
-    <!--HORIZONTAL GUIDELINES-->
-    <android.support.constraint.Guideline
-        android:id="@+id/power_top_guideline"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.suhongjin.nightlight.MainActivity">
+
+        <!--HORIZONTAL GUIDELINES-->
+        <android.support.constraint.Guideline
+            android:id="@+id/power_top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/power_bottom_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <!--VERTICAL GUIDELINES-->
+        <android.support.constraint.Guideline
+            android:id="@+id/button_bottom_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <Button
+            android:id="@+id/power_button"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@drawable/power_button"
+            app:layout_constraintDimensionRatio="H, 1:1"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/power_top_guideline" />
+
+        <Button
+            android:id="@+id/manual_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/button_bottom_guideline"
+            android:text="@string/manual"/>
+
+        <Button
+            android:id="@+id/auto_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/button_bottom_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/auto"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/power_bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+    </android.support.design.widget.NavigationView>
 
-    <!--VERTICAL GUIDELINES-->
-    <android.support.constraint.Guideline
-        android:id="@+id/button_bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <Button
-        android:id="@+id/power_button"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:background="@drawable/power_button"
-        app:layout_constraintDimensionRatio="H, 1:1"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/power_top_guideline" />
-
-    <Button
-        android:id="@+id/manual_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/button_bottom_guideline"
-        android:text="@string/manual"/>
-
-    <Button
-        android:id="@+id/auto_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/button_bottom_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/auto"/>
-
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.DrawerLayout>

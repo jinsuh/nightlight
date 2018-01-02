@@ -66,7 +66,7 @@ public class ColorPickerDialogFragment extends DialogFragment implements SeekBar
         super.onStart();
 
         nightlightState = NightlightState.getInstance();
-        nightlightClient = NightlightClient.getInstance();
+        nightlightClient = NightlightClient.getInstance(getActivity());
         redSeekbar = getDialog().findViewById(R.id.red_seekbar);
         redSeekbar.setTag(NightlightState.RED_TAG);
         greenSeekbar = getDialog().findViewById(R.id.green_seekbar);

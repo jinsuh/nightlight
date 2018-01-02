@@ -1,6 +1,7 @@
 package com.suhongjin.nightlight;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -25,7 +26,7 @@ public class NightLightClientInstrumentedTest {
     @Before
     public void setUp() {
         context = InstrumentationRegistry.getTargetContext();
-        nightlightClient = NightlightClient.getInstance();
+        nightlightClient = NightlightClient.getInstance(context);
     }
 
     @Test
@@ -46,5 +47,18 @@ public class NightLightClientInstrumentedTest {
         assertEquals(testJson.get(Utils.POST_RED_PARAM), red);
         assertEquals(testJson.get(Utils.POST_GREEN_PARAM), green);
         assertEquals(testJson.get(Utils.POST_BLUE_PARAM), blue);
+    }
+
+    @Test
+    /* Test updating the url updates SharedPreferences.*/
+    public void testUpdateUrl() throws Exception {
+        String expectedString = "updating url";
+        nightlightClient.updateUrl(expectedString);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(
+                context.getString(R.string.preferences_file), Context.MODE_PRIVATE);
+        String resultString = sharedPreferences.getString(
+                context.getString(R.string.ip_key), Utils.INITIAL_SERVER_URL);
+        assertEquals(expectedString, resultString);
+        assertEquals(expectedString, nightlightClient.getUrl());
     }
 }
