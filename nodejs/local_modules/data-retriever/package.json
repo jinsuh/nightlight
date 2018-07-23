@@ -9,6 +9,7 @@
   "author": "suhongjin",
   "license": "ISC",
   "dependencies": {
+    "npm": "^6.2.0",
     "promise": "^8.0.1",
     "weather-js": "^2.0.0"
   }
