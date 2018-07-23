@@ -17,12 +17,12 @@ app.get('/', (req, res) => {
   res.send('Hello world!'); 
 });
 
-app.post('/setrgb', function(req, res) {
+app.post('/setrgb', (req, res) => {
   nightlightModel.updateColorValues(req.body.red, req.body.green, req.body.blue);
   res.status(200);
 });
 
-app.get('/getrgb', function(req, res) {
+app.get('/getrgb', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   let jsonString = {};
   jsonString['red'] = nightlightModel.redValue;
@@ -31,12 +31,12 @@ app.get('/getrgb', function(req, res) {
   res.status(200).json(jsonString);
 });
 
-app.get('/power', function(req, res) {
+app.get('/power', (req, res) => {
   console.log('Sending power state request.');
   res.send(nightlightModel.isOn);
 });
 
-app.post('/flip', function(req, res) {
+app.post('/flip', (req, res) => {
   console.log('Flipping power');
   nightlightModel.flipState();
   res.send(nightlightModel.isOn);
@@ -53,6 +53,12 @@ app.get('/temperature', (req, res) => {
       error: error
     });
   });
+});
+
+app.post('/setTemperature', (req, res) => {
+  lighter.createWeatherCronJob();
+  console.log('Created weather cron job.');
+  res.send(true);
 });
 
 app.listen(port, () => {

@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Controls the GPIO pins of the Raspberry Pi.",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "suhongjin",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "cron": "^1.3.0"
+  },
+  "devDependencies": {}
 }
