@@ -43,6 +43,7 @@ app.post('/flip', (req, res) => {
 });
 
 app.get('/temperature', (req, res) => {
+  console.log('Retrieving temperature');
   dataRetriever.getTemperature().then(val => {
     console.log('Temperature is ' + val);
     res.setHeader('Content-Type', 'text/plain');
